@@ -1,0 +1,25 @@
+Practica 1
+Contador de aparición de palabras
+
+  Tabla de aparicion de:
+    Alegria
+    Alegría
+    alegria
+    alegría
+    Amor
+    amor
+    Enojo
+    enojo
+    Ira
+    ira
+    Sueño
+    sueño
+    Aburrimiento
+    aburrimiento
+  1.- Cada hilo debe trabajar con al menos 1 archivo de los cuales obtendrá el
+    conteo de las palabras indicadas + el total de palabras del archivo
+  2.- El padre muestra la estadística final de aparición de palabras en todos
+    los archivos
+
+  Mínimo 20 cuentos.
+  Validar que al menos para cada hilo le toque 1 archivo.

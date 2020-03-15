@@ -1,0 +1,13 @@
+Desarrollo de apps con el paradigma Orientado a Objetos
+Instalación de servicios en red como HTTP, FTP, ICMP, TCP, DHCP, SSH
+Comunicación con servidores
+Desarrollo de web apps
+Creación de redes LAN, WAN, así como su configuración física y logíca
+Conexión serial a circuitos electronicos
+Desarrollo de software con aplicación en circuitos analogicos
+Desarrollo de automatas segun la jerarquia de Chomsky en diversos lenguajes de programación
+Programación de protocolos de comunicación en lenguaje C o lenguaje JAVA
+Instalación de sistemas operativos en maquinas virtuales para trabajar cuestiones de administracición de memoria, procesos
+Creación de analizadores sintacticos para trabajar con compiladores personalizados
+Programación de SPLD, CPLD y FPGA
+Simulación y computarización de transformaciones matematicas
