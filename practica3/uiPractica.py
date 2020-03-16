@@ -7,11 +7,13 @@
 
 #!/usr/bin/env python3
 from PyQt5 import QtWidgets, uic, QtGui
-from PyQt5.QtGui import QIcon, QPixmap, QFont
+from PyQt5.QtGui import QIcon, QPixmap, QFont, QStandardItemModel, QStandardItem
 from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QMainWindow, QDialog,QLabel
 from PyQt5.QtCore import pyqtSlot
 import netifaces
 import sys
+import subprocess
+
 
 ### Elemento de dialogo para manejo de mensajes de error ###
 class ErrorDialog(QDialog):
@@ -50,6 +52,9 @@ class Ui(QtWidgets.QMainWindow):
         self.button4.clicked.connect(self.btnFileClick)
         self.comboBox = self.findChild(QtWidgets.QComboBox, 'cmbInterfaces')
         self.label=self.findChild(QtWidgets.QLabel, 'lblChat')
+        self.lista=self.findChild(QtWidgets.QListView,'listaIP')
+        self.model = QtGui.QStandardItemModel()
+        self.lista.setModel(self.model)
         for i in interfaces:
             self.comboBox.addItem(str(i))
         self.button.setEnabled(False)
@@ -64,7 +69,25 @@ class Ui(QtWidgets.QMainWindow):
 
     ### Aqui va la logica del evento de los datos de la interfaz de red ###
     def btnScanClick(self):
-        print("Escaneando y obteniendo datos de la interfaz de red: ")
+        addrShow=self.addrs[netifaces.AF_INET]
+        datos=addrShow[0]
+        valData=self.comboBox.currentText()
+        if valData!="lo":
+            print(str(datos))
+            ip=datos['addr']
+            netmask=datos['netmask']
+            strCMD="./calculadora "+ip+" "+netmask
+            subprocess.call(strCMD.split(" "))
+            fileIP=open("ips.txt","rt")
+            datoIPs=fileIP.read()
+            fileIP.close()
+            arrayIP=datoIPs.split("\n")
+        else:
+            arrayIP=list()
+            arrayIP.append("127.0.0.1")
+        for i in arrayIP:
+            item=QtGui.QStandardItem(i)
+            self.model.appendRow(item)
         self.button2.setEnabled(True)
         self.button.setEnabled(True)
         self.button4.setEnabled(True)
@@ -82,6 +105,7 @@ class Ui(QtWidgets.QMainWindow):
 
     ### Aqui esta la logica del las interfaces de red ###
     def btnInterfacesClick(self):
+        self.model.removeRows( 0, self.model.rowCount() )
         banner=False
         print("Se selecciono: "+self.comboBox.currentText())
         self.label.setText("Chat usando la interfaz: "+self.comboBox.currentText())
