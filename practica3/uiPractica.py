@@ -3,7 +3,7 @@
 # * Valdez Esquivel Melani Betsabee
 # * Gonzalez Pardo Adrian
 # * 3CV6 20-02
-# * Last file update: 15-03-2020 */
+# * Last file update: 16-03-2020 */
 
 #!/usr/bin/env python3
 from PyQt5 import QtWidgets, uic, QtGui
