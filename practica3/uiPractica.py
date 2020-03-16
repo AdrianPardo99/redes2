@@ -40,8 +40,6 @@ class Ui(QtWidgets.QMainWindow):
         print("Interfaces de red:"+str(interfaces))
         uic.loadUi('inicial.ui', self)
         self.error1=ErrorDialog()
-        self.button = self.findChild(QtWidgets.QPushButton, 'btnAbrir') # Find the button
-        self.button.clicked.connect(self.btnAbrirClick) # Remember to pass the definition/method, not the return value!
         self.button1 =self.findChild(QtWidgets.QPushButton, 'btnInterfaces') # Find the button
         self.button1.clicked.connect(self.btnInterfacesClick)
         self.button2 =self.findChild(QtWidgets.QPushButton, 'btnSent') # Find the button
@@ -52,12 +50,11 @@ class Ui(QtWidgets.QMainWindow):
         self.button4.clicked.connect(self.btnFileClick)
         self.comboBox = self.findChild(QtWidgets.QComboBox, 'cmbInterfaces')
         self.label=self.findChild(QtWidgets.QLabel, 'lblChat')
-        self.lista=self.findChild(QtWidgets.QListView,'listaIP')
-        self.model = QtGui.QStandardItemModel()
-        self.lista.setModel(self.model)
+        self.lista=self.findChild(QtWidgets.QListWidget,'listaIP')
+        self.label1=self.findChild(QtWidgets.QLabel,'lblChatWith')
+        self.lista.itemClicked.connect(self.btnAbrirClick)
         for i in interfaces:
             self.comboBox.addItem(str(i))
-        self.button.setEnabled(False)
         self.button2.setEnabled(False)
         self.button3.setEnabled(False)
         self.button4.setEnabled(False)
@@ -69,6 +66,7 @@ class Ui(QtWidgets.QMainWindow):
 
     ### Aqui va la logica del evento de los datos de la interfaz de red ###
     def btnScanClick(self):
+        self.lista.clear()
         addrShow=self.addrs[netifaces.AF_INET]
         datos=addrShow[0]
         valData=self.comboBox.currentText()
@@ -85,12 +83,8 @@ class Ui(QtWidgets.QMainWindow):
         else:
             arrayIP=list()
             arrayIP.append("127.0.0.1")
-        for i in arrayIP:
-            item=QtGui.QStandardItem(i)
-            self.model.appendRow(item)
-        self.button2.setEnabled(True)
-        self.button.setEnabled(True)
-        self.button4.setEnabled(True)
+        self.lista.addItems(arrayIP)
+
 
 
     ### Aqui va la logica de enviar mensajes ###
@@ -98,14 +92,16 @@ class Ui(QtWidgets.QMainWindow):
         print("Enviando: ")
 
     ### Aqui va la logica de contactar con un miembro de la red ###
-    def btnAbrirClick(self):
+    def btnAbrirClick(self,item):
         # This is executed when the button is pressed
-        print('Abriendo chat: ')
+        self.label1.setText("Conversando con: "+item.text())
+        self.button2.setEnabled(True)
+        self.button4.setEnabled(True)
 
 
     ### Aqui esta la logica del las interfaces de red ###
     def btnInterfacesClick(self):
-        self.model.removeRows( 0, self.model.rowCount() )
+        self.lista.clear()
         banner=False
         print("Se selecciono: "+self.comboBox.currentText())
         self.label.setText("Chat usando la interfaz: "+self.comboBox.currentText())
@@ -119,13 +115,11 @@ class Ui(QtWidgets.QMainWindow):
             print("No se pueden reconocer los datos")
             self.error1.message.setText("No se pueden obtener \ndatos de esta interfaz")
             self.error1.exec_()
-            self.button.setEnabled(False)
             self.button2.setEnabled(False)
             self.button4.setEnabled(False)
             self.button3.setEnabled(False)
         else:
             print(str(self.addrs[netifaces.AF_INET]))
-            self.button.setEnabled(False)
             self.button2.setEnabled(False)
             self.button4.setEnabled(False)
             self.button3.setEnabled(True)
