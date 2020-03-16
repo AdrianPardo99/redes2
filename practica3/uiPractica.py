@@ -35,6 +35,9 @@ class ErrorDialog(QDialog):
 class Ui(QtWidgets.QMainWindow):
     ### Init de la clase ###
     def __init__(self):
+        self.nickname="d3vcr4ck:"
+        self.listaUsr=list()
+        self.diccionarioUsr=dict()
         super(Ui, self).__init__()
         interfaces = netifaces.interfaces()
         print("Interfaces de red:"+str(interfaces))
@@ -53,11 +56,14 @@ class Ui(QtWidgets.QMainWindow):
         self.lista=self.findChild(QtWidgets.QListWidget,'listaIP')
         self.label1=self.findChild(QtWidgets.QLabel,'lblChatWith')
         self.lista.itemClicked.connect(self.btnAbrirClick)
+        self.texto=self.findChild(QtWidgets.QTextEdit,'textEdit')
+        self.chat=self.findChild(QtWidgets.QTextEdit,'txtMessage')
         for i in interfaces:
             self.comboBox.addItem(str(i))
         self.button2.setEnabled(False)
         self.button3.setEnabled(False)
         self.button4.setEnabled(False)
+        self.texto.setEnabled(False)
         self.show()
 
     ### Aqui va la logica del evento de enviar archivos ###
@@ -66,6 +72,7 @@ class Ui(QtWidgets.QMainWindow):
 
     ### Aqui va la logica del evento de los datos de la interfaz de red ###
     def btnScanClick(self):
+        self.listaUsr.clear()
         self.lista.clear()
         addrShow=self.addrs[netifaces.AF_INET]
         datos=addrShow[0]
@@ -84,17 +91,43 @@ class Ui(QtWidgets.QMainWindow):
             arrayIP=list()
             arrayIP.append("127.0.0.1")
         self.lista.addItems(arrayIP)
+        for i in arrayIP:
+            diccionario={"ip":i,"chat":list()}
+            self.listaUsr.append(diccionario)
+        print(str(self.listaUsr))
 
 
+    def actualizaChat(self):
+        self.texto.setText("")
+        for i in self.listaChatUsuario:
+            self.texto.setText(self.texto.toPlainText()+i)
 
     ### Aqui va la logica de enviar mensajes ###
     def btnSentClick(self):
-        print("Enviando: ")
+        tam=self.chat.toPlainText()
+        if len(tam)==0:
+            self.error1.message.setText("No dejar vacio la \ncaja de texto de chat")
+            self.error1.exec_()
+        else:
+            self.chat.setPlainText("")
+            self.listaChatUsuario.append(self.nickname+" "+tam+"\n")
+            print("Enviando: "+tam)
+            self.actualizaChat()
 
     ### Aqui va la logica de contactar con un miembro de la red ###
     def btnAbrirClick(self,item):
         # This is executed when the button is pressed
         self.label1.setText("Conversando con: "+item.text())
+        con=0
+        for i in self.listaUsr:
+            diccionario=i
+            val=diccionario['ip']
+            if item.text()==val:
+                self.listaChatUsuario=diccionario['chat']
+                break
+        if len(self.listaChatUsuario)==0:
+            self.texto.setText("Inicia conversacion: ")
+        self.actualizaChat()
         self.button2.setEnabled(True)
         self.button4.setEnabled(True)
 

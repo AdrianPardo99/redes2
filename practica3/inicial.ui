@@ -69,10 +69,10 @@
    <widget class="QTextEdit" name="textEdit">
     <property name="geometry">
      <rect>
-      <x>280</x>
-      <y>110</y>
+      <x>270</x>
+      <y>80</y>
       <width>511</width>
-      <height>261</height>
+      <height>191</height>
      </rect>
     </property>
    </widget>
@@ -133,6 +133,29 @@
       <width>256</width>
       <height>501</height>
      </rect>
+    </property>
+   </widget>
+   <widget class="QTextEdit" name="txtMessage">
+    <property name="geometry">
+     <rect>
+      <x>410</x>
+      <y>280</y>
+      <width>371</width>
+      <height>87</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>290</x>
+      <y>300</y>
+      <width>67</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Escribe:</string>
     </property>
    </widget>
   </widget>
