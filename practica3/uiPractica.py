@@ -8,7 +8,7 @@
 #!/usr/bin/env python3
 from PyQt5 import QtWidgets, uic, QtGui
 from PyQt5.QtGui import QIcon, QPixmap, QFont, QStandardItemModel, QStandardItem
-from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QMainWindow, QDialog,QLabel
+from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QMainWindow, QDialog,QLabel,  QInputDialog, QLineEdit, QFileDialog
 from PyQt5.QtCore import pyqtSlot
 import netifaces
 import sys
@@ -35,10 +35,9 @@ class ErrorDialog(QDialog):
 class Ui(QtWidgets.QMainWindow):
     ### Init de la clase ###
     def __init__(self):
+        super(Ui, self).__init__()
         self.nickname="d3vcr4ck:"
         self.listaUsr=list()
-        self.diccionarioUsr=dict()
-        super(Ui, self).__init__()
         interfaces = netifaces.interfaces()
         print("Interfaces de red:"+str(interfaces))
         uic.loadUi('inicial.ui', self)
@@ -68,7 +67,14 @@ class Ui(QtWidgets.QMainWindow):
 
     ### Aqui va la logica del evento de enviar archivos ###
     def btnFileClick(self):
-        print("Abriendo file manager")
+        options = QFileDialog.Options()
+        options |= QFileDialog.DontUseNativeDialog
+        self.fileName, _ = QFileDialog.getOpenFileName(self,"QFileDialog.getOpenFileName()", "","All Files (*);;Python Files (*.py)", options=options)
+        if self.fileName:
+            print(self.fileName)
+        else:
+            self.error1.message.setText("Por favor selecciona\nalgun archivo para trabjar")
+            self.error1.exec_()
 
     ### Aqui va la logica del evento de los datos de la interfaz de red ###
     def btnScanClick(self):
@@ -92,7 +98,7 @@ class Ui(QtWidgets.QMainWindow):
             arrayIP.append("127.0.0.1")
         self.lista.addItems(arrayIP)
         for i in arrayIP:
-            diccionario={"ip":i,"chat":list()}
+            diccionario={"ip":i,"chat":list(),"nickname":"non_nicknameDefined"}
             self.listaUsr.append(diccionario)
         print(str(self.listaUsr))
 
@@ -117,13 +123,14 @@ class Ui(QtWidgets.QMainWindow):
     ### Aqui va la logica de contactar con un miembro de la red ###
     def btnAbrirClick(self,item):
         # This is executed when the button is pressed
-        self.label1.setText("Conversando con: "+item.text())
+
         con=0
         for i in self.listaUsr:
             diccionario=i
             val=diccionario['ip']
             if item.text()==val:
                 self.listaChatUsuario=diccionario['chat']
+                self.label1.setText("Conversando con: "+diccionario['nickname'])
                 break
         if len(self.listaChatUsuario)==0:
             self.texto.setText("Inicia conversacion: ")
