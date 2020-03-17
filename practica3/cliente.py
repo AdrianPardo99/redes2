@@ -16,6 +16,14 @@ class Cliente(object):
         self.s=socket.socket(socket.AF_INET,socket.SOCK_STREAM)
         self.s.connect((ip,port))
 
+    def checkTypeMsg(self,msg):
+        if(msg[0]=="\x00"):
+            return "nickname"
+        elif msg[0]=="\x01":
+            return "file"
+        else:
+            return "message"
+
     def initCliente(self):
         while True:
             print("Escribe un mensaje para el servidor: ", end = '')
@@ -24,10 +32,11 @@ class Cliente(object):
             self.s.send(bytes(message,"utf-8"))
             msg=self.s.recv(1024)
             print("Mensaje del servidor: "+msg.decode("utf-8"))
+            print(self.checkTypeMsg(msg))
             if msg=="cerrar\n":
                 break
             elif message=="cerrar\n":
                 break
         self.s.close()
-cliente=Cliente('127.0.0.1',8082)
+cliente=Cliente('127.0.0.1',8080)
 cliente.initCliente()

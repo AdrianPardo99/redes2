@@ -19,18 +19,28 @@ class Server:
     def initChat(self,descriptor):
         desc=descriptor
         while True:
-            self.msg=desc.recv(1024)
-            print("Mensaje del cliente: "+ self.msg.decode("utf-8"))
+            msg=desc.recv(1024)
+            print("Mensaje del cliente: "+ msg.decode("utf-8"))
+            print(self.checkTypeMsg(msg))
             print("Escribe un mensaje: ", end = '')
-            self.message=input()
-            self.message+="\n"
-            desc.send(bytes(self.message,"utf-8"))
-            if self.message=='cerrar\n':
+            message=input()
+            message+="\n"
+            desc.send(bytes(message,"utf-8"))
+            if message=='cerrar\n':
                 break
-            elif self.msg=='cerrar\n':
+            elif msg=='cerrar\n':
                 break
 
         desc.close()
+
+
+    def checkTypeMsg(self,msg):
+        if(msg[0]=="\x00"):
+            return "nickname"
+        elif msg[0]=="\x01":
+            return "file"
+        else:
+            return "message"
 
     def initServer(self):
         self.s=socket.socket(socket.AF_INET,socket.SOCK_STREAM)
@@ -49,6 +59,6 @@ class Server:
 
         self.s.close()
 
-servidor=Server('127.0.0.1',8082)
+servidor=Server('127.0.0.1',8080)
 servidor.initServer()
 servidor.initServer2()
