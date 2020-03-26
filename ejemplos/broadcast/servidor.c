@@ -20,7 +20,7 @@
  */
 
 int main(int argc, char *argv[]) {
-  /*  */
+  /* Variables que se utilizan... */
   int sock, status;
   unsigned sinlen;
   char *buffer;
@@ -30,7 +30,7 @@ int main(int argc, char *argv[]) {
 
   sinlen=sizeof(struct sockaddr_in);
   memset(&sock_in,0,sinlen);
-
+  /* Creacion del socket de Broadcast */
   if((sock=socket(PF_INET,SOCK_DGRAM,IPPROTO_UDP))==-1){
     printf("Error open socket\n");
     exit(EXIT_FAILURE);
@@ -40,19 +40,24 @@ int main(int argc, char *argv[]) {
   sock_in.sin_port=htons(0);
   sock_in.sin_family=PF_INET;
 
+  /* Creacion del punto final de conexion */
   if((status=bind(sock,(struct sockaddr *)&sock_in,sinlen))<0){
     printf("Error bind socket\n");
     exit(EXIT_FAILURE);
   }
   printf("Bind socket status: %d\n",status);
 
+  /* Obtencion del puerto de conexion para el uso de Broadcast */
   if((status=getsockname(sock,(struct sockaddr *)&sock_in,&sinlen))==-1){
     printf("Error getsockname\n");
     exit(EXIT_FAILURE);
   }
-  printf("Sock port usage: %d\n",htons(sock_in.sin_port));
+  printf("Server Broadcast port access: %d\n",htons(sock_in.sin_port));
   memset(buffer,0,MAXBUF);
 
+
+  /* Espera del mensaje de Broadcast con datagrama (puede o no llegarse a
+    detectar) */
   if((status=recvfrom(sock,buffer,MAXBUF,0,(struct sockaddr *)&sock_in,&sinlen))==-1){
     printf("Error recvfrom\n");
     exit(EXIT_FAILURE);
