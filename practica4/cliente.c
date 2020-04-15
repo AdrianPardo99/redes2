@@ -28,7 +28,7 @@ int main(int argc,char **argv){
 
   threadID=(pthread_t*)malloc(sizeof(pthread_t)*5);
   id=(int*)malloc(sizeof(int)*5);
-  buffer=(char**)malloc(sizeof(char*)*5);
+  buffer=(trama**)malloc(sizeof(trama*)*5);
   imgs=(imagen*)malloc(sizeof(imagen)*5);
   if(threadID==NULL||id==NULL||buffer==NULL||imgs==NULL){
     printf("Error allocating memory in the threads or the int ids or"

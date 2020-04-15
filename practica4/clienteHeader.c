@@ -7,23 +7,46 @@
 
 #include "clienteHeader.h"
 
-void printTrama(unsigned char *tr){
-  int i,tam=0;
-  for(i=0;i<tramaTamMax;i++){
+void changeColor(int des){
+  switch (des) {
+    case 0:
+      printf("%s",BBLU);
+    break;
+    case 1:
+      printf("%s",BYEL);
+    break;
+    case 2:
+      printf("%s",BGRN);
+    break;
+    case 3:
+    printf("%s",BCYN);
+    break;
+    case 4:
+      printf("%s",BMAG);
+    break;
+    default:
+      printf("%s",KNRM);
+  }
+}
+
+void printTrama(trama *tr,int size){
+  int i;
+  for(i=0;i<size;i++){
+    (i==0)?(changeColor(0)):((i>0&&i<=2)?(changeColor(1)):
+      ((i>=3&&i<=4)?(changeColor(2)):((i>=5&&i<=6)?(changeColor(3)):
+      (changeColor(4)))));
+    printf(" %.2X ",*(tr+i));
     if((i+1)%16==0){
       printf("\n");
     }
-    if(i>=5){
-      tam++;
-    }
-    printf(" %.2X ",*(tr+i));
   }
-  printf("\nTamanio %d\n",tam);
+  changeColor(-1);
+  printf("\n");
 }
 
-unsigned char *reciveClient(){
-  unsigned char *datos;
-  datos=(unsigned char*)malloc(sizeof(unsigned char)*tramaTamMax);
+trama *reciveClient(){
+  trama *datos;
+  datos=(trama*)malloc(sizeof(trama)*tramaTamMax);
   if(datos==NULL){
     printf("Error allocating memory for datos\n");
     exit(EXIT_FAILURE);
@@ -99,12 +122,14 @@ void initClienteMulticast(){
 
 void *hiloCliente(void *arg){
   int id=*((int*)arg),ban=1,who,format,tam=1;
-  unsigned char *buffAux;
+  trama *buffAux;
   while(ban){
     buffAux=reciveClient();
     who=(*(buffAux)>>4)&0x0f;
     if(who==(id+1)){
-      printTrama(buffAux);
+      tam=*(buffAux+5);
+      tam=(tam<<8)+*(buffAux+6);
+      printTrama(buffAux,tam);
       ban=0;
     }
   }

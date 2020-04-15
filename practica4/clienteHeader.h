@@ -16,6 +16,7 @@
 #include <netdb.h>
 #include <unistd.h>
 #include <signal.h>
+#include "color.h"
 
 #define segmentos 20
 #define tramaTamMax 1500
@@ -35,16 +36,20 @@ typedef struct archivo{
   int *arrSegmentos,totalSegmentos;
 }imagen;
 
+
+typedef unsigned char trama;
 imagen *imgs;
-char **buffer;
+trama **buffer;
 pthread_t *threadID;
 int *id,sock,status,port;
 unsigned sinlen;
 struct sockaddr_in sock_in;
 struct ip_mreq imreq;
 
-void printTrama(unsigned char*);
-unsigned char *reciveClient();
+
+void changeColor(int);
+void printTrama(trama*,int);
+trama *reciveClient();
 void onExit();
 int checkPosition(int,int);
 void initClienteBroadcast();

@@ -19,14 +19,40 @@ void sleepT(int a){
   while(clock()<star+a);
 }
 
-void printTrama(trama *tr){
+void changeColor(int des){
+  switch (des) {
+    case 0:
+      printf("%s",BBLU);
+    break;
+    case 1:
+      printf("%s",BYEL);
+    break;
+    case 2:
+      printf("%s",BGRN);
+    break;
+    case 3:
+    printf("%s",BCYN);
+    break;
+    case 4:
+      printf("%s",BMAG);
+    break;
+    default:
+      printf("%s",KNRM);
+  }
+}
+
+void printTrama(trama *tr,int size){
   int i;
-  for(i=0;i<tramaTamMax;i++){
-    if(i%16==0){
+  for(i=0;i<size;i++){
+    (i==0)?(changeColor(0)):((i>0&&i<=2)?(changeColor(1)):
+      ((i>=3&&i<=4)?(changeColor(2)):((i>=5&&i<=6)?(changeColor(3)):
+      (changeColor(4)))));
+    printf(" %.2X ",*(tr+i));
+    if((i+1)%16==0){
       printf("\n");
     }
-    printf(" %.2X ",*(tr+i));
   }
+  changeColor(-1);
   printf("\n");
 }
 
@@ -63,12 +89,14 @@ void *threadFun(void *arg){
       i=0;
       *(buffer+1)=0x00;
       *(buffer+2)=0x01;
+      *(buffer+5)=((imgs+id)->mtuMax>>8)&0xff;
+      *(buffer+6)=((imgs+id)->mtuMax)&0xff;
       while(!feof(file)&&bandera){
-        for(j=5;j<tramaTamMax;j++){
+        for(j=7;j<tramaTamMax;j++){
           *(buffer+j)=0x00;
         }
         fread(valM+0,sizeof(trama),(imgs+id)->mtuMax,file);
-        memcpy(buffer+5,valM+0,tramaTamMax);
+        memcpy(buffer+7,valM+0,tramaTamMax);
         sentData(buffer,(imgs+id)->mtuMax);
         i++;
         if(*(buffer+2)==0xff){
@@ -183,9 +211,9 @@ void tamFiles(int arg){
     while(fgetc(file)!=EOF)
       t++;
     (imgs+i)->tam=t;
-    if((t/segmentos)>1495){
-      (imgs+i)->segmentosMTU=1+(t/1495);
-      (imgs+i)->mtuMax=1495;
+    if((t/segmentos)>1493){
+      (imgs+i)->segmentosMTU=1+(t/1493);
+      (imgs+i)->mtuMax=1493;
     }else{
       (imgs+i)->mtuMax=1+(t/segmentos);
       (imgs+i)->segmentosMTU=segmentos;

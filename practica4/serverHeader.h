@@ -18,6 +18,7 @@
 #include <unistd.h>
 #include <time.h>
 #include <signal.h>
+#include "color.h"
 
 #define segmentos 20
 #define tramaTamMax 1500
@@ -51,7 +52,8 @@ struct sockaddr_in sock_in;
 
 void signalServer(int);
 void sleepT(int);
-void printTrama(trama*);
+void changeColor(int);
+void printTrama(trama*,int);
 void *threadFun(void*);
 void sentData(trama*,int);
 void onExit();

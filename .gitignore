@@ -13,3 +13,4 @@ serverHeader.o
 cliente
 clienteHeader.o
 clienteHeader.h.gch
+color.h.gch
