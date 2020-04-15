@@ -7,3 +7,9 @@ a.out
 ips.txt
 cliente
 servidor
+servidorMul
+serverHeader.h.gch
+serverHeader.o
+cliente
+clienteHeader.o
+clienteHeader.h.gch
