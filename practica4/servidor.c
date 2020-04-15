@@ -3,14 +3,14 @@
  * Valdez Esquivel Melani Betsabee
  * Gonzalez Pardo Adrian
  * 3CV6 20-02
- * Last file update: 14-04-2020 */
+ * Last file update: 15-04-2020 */
 
 #include "serverHeader.h"
 
 int main(int argc, char *argv[]) {
   if(argc<8){
     printf("Usage %s <PICTURE-0> <PICTURE-1> <PICTURE-2> <PICTURE-3>"
-      " <PICTURE-4> <typeServer(0 multicas / 1 broadcast)> <PORT>\n",*argv);
+      " <PICTURE-4> <typeServer(0 multicast / 1 broadcast)> <PORT>\n",*argv);
     exit(1);
   }
   signal(SIGINT,signalServer);

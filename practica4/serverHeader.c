@@ -3,7 +3,7 @@
  * Valdez Esquivel Melani Betsabee
  * Gonzalez Pardo Adrian
  * 3CV6 20-02
- * Last file update: 14-04-2020 */
+ * Last file update: 15-04-2020 */
 
 #include "serverHeader.h"
 
@@ -25,7 +25,7 @@ void printTrama(trama *tr){
     if(i%16==0){
       printf("\n");
     }
-    printf(" %02X ",*(tr+i));
+    printf(" %.2X ",*(tr+i));
   }
   printf("\n");
 }
@@ -63,15 +63,19 @@ void *threadFun(void *arg){
       i=0;
       *(buffer+1)=0x00;
       *(buffer+2)=0x01;
-      while(fgets(valM,(imgs+id)->mtuMax,file)&&bandera){
-        memcpy(buffer+5,valM+0,strlen(valM));
-        sentData(buffer);
+      while(!feof(file)&&bandera){
+        for(j=5;j<tramaTamMax;j++){
+          *(buffer+j)=0x00;
+        }
+        fread(valM+0,sizeof(trama),(imgs+id)->mtuMax,file);
+        memcpy(buffer+5,valM+0,tramaTamMax);
+        sentData(buffer,(imgs+id)->mtuMax);
         i++;
         if(*(buffer+2)==0xff){
-          *(buffer+1)+=1;
-          *(buffer+2)=0;
+          *(buffer+1)+=0x01;
+          *(buffer+2)=0x00;
         }else{
-          *(buffer+2)+=1;
+          *(buffer+2)+=0x01;
         }
         sleepT(20000);
         sem_post(&*(a));
@@ -81,8 +85,8 @@ void *threadFun(void *arg){
   }
 }
 
-void sentData(char *n){
-  if(sendto(sock,n,tramaTamMax,0,(struct sockaddr*)&sock_in,sinlen)==-1){
+void sentData(trama *n,int tam){
+  if(sendto(sock,n,tam,0,(struct sockaddr*)&sock_in,sinlen)==-1){
     printf("Error sendto\n");
     exit(EXIT_FAILURE);
   }
@@ -128,7 +132,6 @@ void initServerMulticast(){
   struct in_addr iaddr;
   memset(&sock_in,0,sinlen);
   memset(&sock_in, 0, sizeof(struct sockaddr_in));
-  memset(&imreq, 0, sizeof(struct ip_mreq));
   if((sock=socket(PF_INET,SOCK_DGRAM,0))==-1){
     printf("Error open socket\n");
     exit(EXIT_FAILURE);

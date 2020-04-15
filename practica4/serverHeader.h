@@ -3,7 +3,7 @@
  * Valdez Esquivel Melani Betsabee
  * Gonzalez Pardo Adrian
  * 3CV6 20-02
- * Last file update: 14-04-2020 */
+ * Last file update: 15-04-2020 */
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -42,19 +42,18 @@ images *imgs;
 pthread_t *threadID;
 int *id;
 
-typedef char trama;
+typedef unsigned char trama;
 
 sem_t *a;
 int sock,status,port,bandera;
 unsigned sinlen;
 struct sockaddr_in sock_in;
-struct ip_mreq imreq;
 
 void signalServer(int);
 void sleepT(int);
 void printTrama(trama*);
 void *threadFun(void*);
-void sentData(char*);
+void sentData(trama*,int);
 void onExit();
 void initServerBroadcast();
 void initServerMulticast();
