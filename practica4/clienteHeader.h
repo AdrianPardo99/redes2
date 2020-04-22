@@ -3,7 +3,7 @@
  * Valdez Esquivel Melani Betsabee
  * Gonzalez Pardo Adrian
  * 3CV6 20-02
- * Last file update: 15-04-2020 */
+ * Last file update: 16-04-2020 */
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -46,7 +46,9 @@ unsigned sinlen;
 struct sockaddr_in sock_in;
 struct ip_mreq imreq;
 
-
+void printFalta(int*,int);
+int checkIsTheBuff(int*,int);
+int checkArr(int*,int);
 void changeColor(int);
 void printTrama(trama*,int);
 trama *reciveClient();

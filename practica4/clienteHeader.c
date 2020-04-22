@@ -3,9 +3,33 @@
  * Valdez Esquivel Melani Betsabee
  * Gonzalez Pardo Adrian
  * 3CV6 20-02
- * Last file update: 15-04-2020 */
+ * Last file update: 16-04-2020 */
 
 #include "clienteHeader.h"
+
+
+void printFalta(int *arr,int t){
+  int i;
+  for(i=0;i<t;i++){
+    if(!*(arr+i)){
+      printf(" %d ",i);
+    }
+  }
+}
+
+int checkIsTheBuff(int *arr,int i){
+  return *(arr+i);
+}
+
+int checkArr(int *arr,int l){
+  int i;
+  for(i=0;i<l;i++){
+    if(*(arr+i)==0){
+      return 0;
+    }
+  }
+  return 1;
+}
 
 void changeColor(int des){
   switch (des) {
@@ -121,16 +145,21 @@ void initClienteMulticast(){
 }
 
 void *hiloCliente(void *arg){
-  int id=*((int*)arg),ban=1,who,format,tam=1;
-  trama *buffAux;
+  int id=*((int*)arg),ban=1,who,format,tam=1,i;
+  trama *buffAux,*buff2,aux;
+  char *name;
+  FILE *outputIMG;
   while(ban){
     buffAux=reciveClient();
     who=(*(buffAux)>>4)&0x0f;
     if(who==(id+1)){
       tam=*(buffAux+5);
       tam=(tam<<8)+*(buffAux+6);
-      printTrama(buffAux,tam);
+      //printTrama(buffAux,tam);
       ban=0;
+    }else{
+      buff2=buffAux;
+      free(buff2);
     }
   }
   format=(*(buffAux))&0x0f;
@@ -140,9 +169,57 @@ void *hiloCliente(void *arg){
   (imgs+id)->format=(format==1)?(nameJPEG):
     ((format==2)?(nameJPG):((format==3)?(namePNG):(nameGIF)));
   (imgs+id)->totalSegmentos=((*(buffAux+3)<<8))+((*(buffAux+4)));
+  *(buffer+id)=(trama*)malloc(sizeof(trama)*((imgs+id)->totalSegmentos)*tam);
+  (imgs+id)->arrSegmentos=(int*)malloc(sizeof(int)*((imgs+id)->totalSegmentos));
+  if(*(buffer+id)==NULL ||((imgs+id)->arrSegmentos)==NULL){
+    printf("Error allocating memory in buffer[%d] or allocating the array"
+      " for control\n",id);
+    exit(EXIT_FAILURE);
+  }
+  who=(*(buffAux+1)<<8)+*(buffAux+2);
   printf("Imagen a construir: %s%s\n"
-    "Numero total de tramas: %d\nPeso Aproximado de: %d bytes\n\n"
+    "Numero total de tramas: %d\nPeso Aproximado de: %d bytes\n"
+    "Primer trama recibida es: %d\n\n"
     ,(imgs+id)->name,(imgs+id)->format,(imgs+id)->totalSegmentos,
-    (tam));
-  exit(0);
+    tam,who);
+  for(i=0;i<(imgs+id)->totalSegmentos;i++){
+    (imgs+id)->arrSegmentos[i]=0;
+  }
+  (imgs+id)->arrSegmentos[who-1]=1;
+  memcpy(*(buffer+id)+((who-1)*tam),buffAux+7,tam);
+  buff2=buffAux;
+  free(buff2);
+  while(!checkArr((imgs+id)->arrSegmentos,(imgs+id)->totalSegmentos)){
+    buffAux=reciveClient();
+    who=(*(buffAux)>>4)&0x0f;
+    if(who==(id+1)){
+      i=(*(buffAux+1)<<8)+*(buffAux+2);
+      if(!checkIsTheBuff((imgs+id)->arrSegmentos,i-1)){
+        (imgs+id)->arrSegmentos[i-1]=1;
+        memcpy(*(buffer+id)+((i-1)*tam),buffAux+7,tam);
+      }
+    }else{
+      buff2=buffAux;
+      free(buff2);
+    }
+  }
+  name=(char*)malloc(sizeof(char)*(strlen((imgs+id)->name)+1
+  +strlen((imgs+id)->format)));
+  memcpy(name+0,(imgs+id)->name,strlen((imgs+id)->name));
+  i=strlen(name);
+  memcpy(name+i,(imgs+id)->format,strlen((imgs+id)->format));
+  printf("Finalizo imagen[%d]=%s\n",id+1,name);
+  outputIMG=fopen(name,"wb");
+  if(outputIMG==NULL){
+    printf("Valio al abrir el flujo :'v\n");
+    exit(EXIT_FAILURE);
+  }
+  who=((imgs+id)->totalSegmentos)*tam;
+
+  for(i=0;i<who;i++){
+    aux=buffer[id][i];
+    fwrite(&aux,sizeof(trama),1,outputIMG);
+  }
+  fclose(outputIMG);
+
 }
