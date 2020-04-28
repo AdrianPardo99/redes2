@@ -23,6 +23,6 @@ Inicialmente vemos puertos utilizados y la configuración de los puertos
 Una vez ya teniendo esto ya solo es necesario mandar un ping y ver si las VPCS tienen la configuración de IP guardada
 En la configuración de VPCS se tiene
 
-\# ip <address>/<mask-bits> <gateway>
+\# ip \<address\>/\<mask-bits\> \<gateway\>
 
 \# save
