@@ -24,3 +24,8 @@ May 12 18:31:25.491 HYPERVISOR: exec_cmd: nio setup_filter udp-60fe7943-a146-419
 May 12 18:43:18.650 HYPERVISOR: exec_cmd: nio unbind_filter udp-60fe7943-a146-419a-a3d5-1adb6891adfb 2 
 May 12 18:53:53.091 HYPERVISOR: exec_cmd: nio bind_filter udp-60fe7943-a146-419a-a3d5-1adb6891adfb 2 capture 
 May 12 18:53:53.091 HYPERVISOR: exec_cmd: nio setup_filter udp-60fe7943-a146-419a-a3d5-1adb6891adfb 2 en10mb /run/media/d3vcr4ck/externData/materias-Sem20_2/redes2/redes2/practica5/enrutamientoBroadcast/project-files/captures/R1_FastEthernet00_to_Switch1_Ethernet0.pcap 
+May 12 19:31:43.430 HYPERVISOR: exec_cmd: nio unbind_filter udp-60fe7943-a146-419a-a3d5-1adb6891adfb 2 
+May 12 19:31:50.224 HYPERVISOR: exec_cmd: ethsw delete Switch1 
+May 12 19:31:50.285 HYPERVISOR: exec_cmd: hypervisor stop 
+May 12 19:31:50.650 HYPERVISOR: Stopped.
+May 12 19:31:50.650 GENERAL: reset done.

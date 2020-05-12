@@ -1,0 +1,16 @@
+Cisco Router Simulation Platform (version 0.2.21-amd64/Linux stable)
+Copyright (c) 2005-2011 Christophe Fillot.
+Build date: Jan  9 2020 00:00:00
+
+Log file: writing to dynamips_i1_log.txt
+Hypervisor TCP control server started (IP localhost port 33575).
+NIO udp-60fe7943-a146-419a-a3d5-1adb6891adfb: capturing to file '/run/media/d3vcr4ck/externData/materias-Sem20_2/redes2/redes2/practica5/enrutamientoBroadcast/project-files/captures/R1_FastEthernet00_to_Switch1_Ethernet0.pcap'
+NIO udp-60fe7943-a146-419a-a3d5-1adb6891adfb: ending packet capture.
+NIO udp-60fe7943-a146-419a-a3d5-1adb6891adfb: capturing to file '/run/media/d3vcr4ck/externData/materias-Sem20_2/redes2/redes2/practica5/enrutamientoBroadcast/project-files/captures/R1_FastEthernet00_to_Switch1_Ethernet0.pcap'
+NIO udp-60fe7943-a146-419a-a3d5-1adb6891adfb: ending packet capture.
+NIO udp-60fe7943-a146-419a-a3d5-1adb6891adfb: capturing to file '/run/media/d3vcr4ck/externData/materias-Sem20_2/redes2/redes2/practica5/enrutamientoBroadcast/project-files/captures/R1_FastEthernet00_to_Switch1_Ethernet0.pcap'
+NIO udp-60fe7943-a146-419a-a3d5-1adb6891adfb: ending packet capture.
+Hypervisor: closing control sockets.
+Hypervisor: closing remote client connections.
+Shutdown in progress...
+Shutdown completed.

@@ -708,6 +708,11 @@
                             "type": "ethernet"
                         },
                         {
+                            "name": "tap0",
+                            "special": false,
+                            "type": "tap"
+                        },
+                        {
                             "name": "virbr0",
                             "special": true,
                             "type": "ethernet"
@@ -811,7 +816,7 @@
                 "template_id": "b198fc8f-8400-4ecc-bedd-7e768dbc6713",
                 "width": 66,
                 "x": 7,
-                "y": -142,
+                "y": -143,
                 "z": 1
             }
         ]
