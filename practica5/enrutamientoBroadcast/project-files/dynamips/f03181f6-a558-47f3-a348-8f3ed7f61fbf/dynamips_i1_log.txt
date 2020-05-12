@@ -1,0 +1,26 @@
+May 12 18:09:48.580 HYPERVISOR: Release 0.2.21-amd64/Linux (tag 2019071212)
+May 12 18:09:48.581 HYPERVISOR: Started on IP = localhost, TCP port = 33575.
+May 12 18:09:48.591 HYPERVISOR: exec_cmd: hypervisor version 
+May 12 18:09:48.592 HYPERVISOR: exec_cmd: hypervisor working_dir /run/media/d3vcr4ck/externData/materias-Sem20_2/redes2/redes2/practica5/enrutamientoBroadcast/project-files/dynamips 
+May 12 18:09:48.592 GENERAL: working_dir=/run/media/d3vcr4ck/externData/materias-Sem20_2/redes2/redes2/practica5/enrutamientoBroadcast/project-files/dynamips
+May 12 18:09:48.593 HYPERVISOR: exec_cmd: ethsw create Switch1 
+May 12 18:09:50.391 HYPERVISOR: exec_cmd: nio create_udp udp-dbc77eee-df77-4a1e-9022-e8ea28b62e7d 10000 127.0.0.1 10001 
+May 12 18:09:50.392 HYPERVISOR: exec_cmd: ethsw add_nio Switch1 udp-dbc77eee-df77-4a1e-9022-e8ea28b62e7d 
+May 12 18:09:50.414 HYPERVISOR: exec_cmd: ethsw set_access_port Switch1 udp-dbc77eee-df77-4a1e-9022-e8ea28b62e7d 1 
+May 12 18:09:50.534 HYPERVISOR: exec_cmd: nio create_udp udp-bb56c0f4-0d55-4a6b-b756-ce508ac11387 10002 127.0.0.1 10003 
+May 12 18:09:50.535 HYPERVISOR: exec_cmd: ethsw add_nio Switch1 udp-bb56c0f4-0d55-4a6b-b756-ce508ac11387 
+May 12 18:09:50.553 HYPERVISOR: exec_cmd: ethsw set_access_port Switch1 udp-bb56c0f4-0d55-4a6b-b756-ce508ac11387 1 
+May 12 18:09:51.124 HYPERVISOR: exec_cmd: nio create_udp udp-86f7032e-b667-4ef8-9a84-51074f597de5 10011 127.0.0.1 10010 
+May 12 18:09:51.126 HYPERVISOR: exec_cmd: ethsw add_nio Switch1 udp-86f7032e-b667-4ef8-9a84-51074f597de5 
+May 12 18:09:51.136 HYPERVISOR: exec_cmd: ethsw set_access_port Switch1 udp-86f7032e-b667-4ef8-9a84-51074f597de5 1 
+May 12 18:09:51.442 HYPERVISOR: exec_cmd: nio create_udp udp-60fe7943-a146-419a-a3d5-1adb6891adfb 10013 127.0.0.1 10012 
+May 12 18:09:51.443 HYPERVISOR: exec_cmd: ethsw add_nio Switch1 udp-60fe7943-a146-419a-a3d5-1adb6891adfb 
+May 12 18:09:51.461 HYPERVISOR: exec_cmd: ethsw set_access_port Switch1 udp-60fe7943-a146-419a-a3d5-1adb6891adfb 1 
+May 12 18:23:51.486 HYPERVISOR: exec_cmd: nio bind_filter udp-60fe7943-a146-419a-a3d5-1adb6891adfb 2 capture 
+May 12 18:23:51.487 HYPERVISOR: exec_cmd: nio setup_filter udp-60fe7943-a146-419a-a3d5-1adb6891adfb 2 en10mb /run/media/d3vcr4ck/externData/materias-Sem20_2/redes2/redes2/practica5/enrutamientoBroadcast/project-files/captures/R1_FastEthernet00_to_Switch1_Ethernet0.pcap 
+May 12 18:31:22.373 HYPERVISOR: exec_cmd: nio unbind_filter udp-60fe7943-a146-419a-a3d5-1adb6891adfb 2 
+May 12 18:31:25.490 HYPERVISOR: exec_cmd: nio bind_filter udp-60fe7943-a146-419a-a3d5-1adb6891adfb 2 capture 
+May 12 18:31:25.491 HYPERVISOR: exec_cmd: nio setup_filter udp-60fe7943-a146-419a-a3d5-1adb6891adfb 2 en10mb /run/media/d3vcr4ck/externData/materias-Sem20_2/redes2/redes2/practica5/enrutamientoBroadcast/project-files/captures/R1_FastEthernet00_to_Switch1_Ethernet0.pcap 
+May 12 18:43:18.650 HYPERVISOR: exec_cmd: nio unbind_filter udp-60fe7943-a146-419a-a3d5-1adb6891adfb 2 
+May 12 18:53:53.091 HYPERVISOR: exec_cmd: nio bind_filter udp-60fe7943-a146-419a-a3d5-1adb6891adfb 2 capture 
+May 12 18:53:53.091 HYPERVISOR: exec_cmd: nio setup_filter udp-60fe7943-a146-419a-a3d5-1adb6891adfb 2 en10mb /run/media/d3vcr4ck/externData/materias-Sem20_2/redes2/redes2/practica5/enrutamientoBroadcast/project-files/captures/R1_FastEthernet00_to_Switch1_Ethernet0.pcap 
