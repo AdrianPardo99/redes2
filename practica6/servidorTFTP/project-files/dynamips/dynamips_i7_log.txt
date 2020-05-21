@@ -1,0 +1,15 @@
+May 21 01:23:50.827 HYPERVISOR: Release 0.2.21-amd64/Linux (tag 2019071212)
+May 21 01:23:50.827 HYPERVISOR: Started on IP = localhost, TCP port = 45131.
+May 21 01:23:50.837 HYPERVISOR: exec_cmd: hypervisor version 
+May 21 01:23:50.838 HYPERVISOR: exec_cmd: hypervisor working_dir /run/media/d3vcr4ck/externData/materias-Sem20_2/redes2/redes2/practica6/servidorTFTP/project-files/dynamips 
+May 21 01:23:50.838 GENERAL: working_dir=/run/media/d3vcr4ck/externData/materias-Sem20_2/redes2/redes2/practica6/servidorTFTP/project-files/dynamips
+May 21 01:23:50.839 HYPERVISOR: exec_cmd: ethsw create Switch4 
+May 21 01:23:52.313 HYPERVISOR: exec_cmd: nio create_udp udp-ea793b79-ed68-4f07-b7ce-88ebd102b812 10017 127.0.0.1 10016 
+May 21 01:23:52.314 HYPERVISOR: exec_cmd: ethsw add_nio Switch4 udp-ea793b79-ed68-4f07-b7ce-88ebd102b812 
+May 21 01:23:52.331 HYPERVISOR: exec_cmd: ethsw set_access_port Switch4 udp-ea793b79-ed68-4f07-b7ce-88ebd102b812 1 
+May 21 01:23:53.206 HYPERVISOR: exec_cmd: nio create_udp udp-e6fda7a0-5ea8-4abd-a51f-696c2691703d 10038 127.0.0.1 10039 
+May 21 01:23:53.207 HYPERVISOR: exec_cmd: ethsw add_nio Switch4 udp-e6fda7a0-5ea8-4abd-a51f-696c2691703d 
+May 21 01:23:53.213 HYPERVISOR: exec_cmd: ethsw set_access_port Switch4 udp-e6fda7a0-5ea8-4abd-a51f-696c2691703d 1 
+May 21 01:23:53.305 HYPERVISOR: exec_cmd: nio create_udp udp-fc40c6e8-4d39-4621-9538-939b7b4184a6 10040 127.0.0.1 10041 
+May 21 01:23:53.305 HYPERVISOR: exec_cmd: ethsw add_nio Switch4 udp-fc40c6e8-4d39-4621-9538-939b7b4184a6 
+May 21 01:23:53.314 HYPERVISOR: exec_cmd: ethsw set_access_port Switch4 udp-fc40c6e8-4d39-4621-9538-939b7b4184a6 1 

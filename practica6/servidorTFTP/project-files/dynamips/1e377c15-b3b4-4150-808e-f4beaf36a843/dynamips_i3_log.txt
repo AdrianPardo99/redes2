@@ -1,0 +1,41 @@
+May 20 22:48:27.978 HYPERVISOR: Release 0.2.21-amd64/Linux (tag 2019071212)
+May 20 22:48:27.978 HYPERVISOR: Started on IP = localhost, TCP port = 38011.
+May 20 22:48:27.987 HYPERVISOR: exec_cmd: hypervisor version 
+May 20 22:48:27.987 HYPERVISOR: exec_cmd: hypervisor working_dir /run/media/d3vcr4ck/externData/materias-Sem20_2/redes2/redes2/practica6/servidorTFTP/project-files/dynamips 
+May 20 22:48:27.988 GENERAL: working_dir=/run/media/d3vcr4ck/externData/materias-Sem20_2/redes2/redes2/practica6/servidorTFTP/project-files/dynamips
+May 20 22:48:27.988 HYPERVISOR: exec_cmd: hypervisor working_dir /run/media/d3vcr4ck/externData/materias-Sem20_2/redes2/redes2/practica6/servidorTFTP/project-files/dynamips/3720f91c-832a-4cd8-b868-94432fa27273 
+May 20 22:48:27.988 GENERAL: working_dir=/run/media/d3vcr4ck/externData/materias-Sem20_2/redes2/redes2/practica6/servidorTFTP/project-files/dynamips/3720f91c-832a-4cd8-b868-94432fa27273
+May 20 22:48:27.989 HYPERVISOR: exec_cmd: vm create Router-3 2 c3745 
+May 20 22:48:27.990 VM: VM Router-3 created.
+May 20 22:48:27.990 HYPERVISOR: exec_cmd: vm set_con_tcp_port Router-3 5002 
+May 20 22:48:27.991 HYPERVISOR: exec_cmd: c3745 get_mac_addr Router-3 
+May 20 22:48:27.991 HYPERVISOR: exec_cmd: vm set_disk0 Router-3 0 
+May 20 22:48:27.992 HYPERVISOR: exec_cmd: vm get_status Router-3 
+May 20 22:48:27.992 HYPERVISOR: exec_cmd: vm set_idle_pc Router-3 0x602701e4 
+May 20 22:48:27.994 HYPERVISOR: exec_cmd: vm set_ios Router-3 /home/d3vcr4ck/GNS3/images/IOS/c3745-adventerprisek9-mz.124-15.T14.image 
+May 20 22:48:27.994 HYPERVISOR: exec_cmd: c3745 set_mac_addr Router-3 c402.b410.0000 
+May 20 22:48:27.995 HYPERVISOR: exec_cmd: vm set_nvram Router-3 256 
+May 20 22:48:27.995 HYPERVISOR: exec_cmd: vm set_ram Router-3 256 
+May 20 22:48:27.996 HYPERVISOR: exec_cmd: vm get_status Router-3 
+May 20 22:48:27.996 HYPERVISOR: exec_cmd: vm slot_add_binding Router-3 1 0 NM-1FE-TX 
+May 20 22:48:27.997 HYPERVISOR: exec_cmd: vm get_status Router-3 
+May 20 22:48:27.997 HYPERVISOR: exec_cmd: vm slot_add_binding Router-3 2 0 NM-1FE-TX 
+May 20 22:48:27.998 HYPERVISOR: exec_cmd: vm get_status Router-3 
+May 20 22:48:27.998 HYPERVISOR: exec_cmd: vm slot_add_binding Router-3 3 0 NM-1FE-TX 
+May 20 22:48:27.999 HYPERVISOR: exec_cmd: vm get_status Router-3 
+May 20 22:48:27.999 HYPERVISOR: exec_cmd: vm slot_add_binding Router-3 4 0 NM-4T 
+May 20 22:48:29.294 HYPERVISOR: exec_cmd: nio create_udp udp-fbb9dccc-fccb-4864-bc5d-eb0315f47879 10010 127.0.0.1 10011 
+May 20 22:48:29.520 HYPERVISOR: exec_cmd: vm slot_add_nio_binding Router-3 1 0 udp-fbb9dccc-fccb-4864-bc5d-eb0315f47879 
+May 20 22:48:29.522 HYPERVISOR: exec_cmd: vm get_status Router-3 
+May 20 22:48:29.910 HYPERVISOR: exec_cmd: nio create_udp udp-85a03448-2811-4e9d-924d-438b3a04e011 10026 127.0.0.1 10027 
+May 20 22:48:29.912 HYPERVISOR: exec_cmd: vm slot_add_nio_binding Router-3 0 0 udp-85a03448-2811-4e9d-924d-438b3a04e011 
+May 20 22:48:29.913 HYPERVISOR: exec_cmd: vm get_status Router-3 
+May 20 22:50:39.641 HYPERVISOR: exec_cmd: vm get_status Router-3 
+May 20 22:50:39.647 HYPERVISOR: exec_cmd: vm extract_config Router-3 
+May 20 22:50:40.056 HYPERVISOR: exec_cmd: vm get_status Router-3 
+May 20 22:50:40.057 HYPERVISOR: exec_cmd: vm extract_config Router-3 
+May 20 22:50:40.057 HYPERVISOR: exec_cmd: vm delete Router-3 
+May 20 22:50:40.057 VM: VM Router-3 destroyed.
+May 20 22:50:40.058 HYPERVISOR: exec_cmd: hypervisor stop 
+May 20 22:50:40.124 HYPERVISOR: Stopped.
+May 20 22:50:40.124 GENERAL: reset done.

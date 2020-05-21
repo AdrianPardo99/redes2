@@ -1,0 +1,15 @@
+May 21 01:23:50.788 HYPERVISOR: Release 0.2.21-amd64/Linux (tag 2019071212)
+May 21 01:23:50.788 HYPERVISOR: Started on IP = localhost, TCP port = 60355.
+May 21 01:23:50.798 HYPERVISOR: exec_cmd: hypervisor version 
+May 21 01:23:50.798 HYPERVISOR: exec_cmd: hypervisor working_dir /run/media/d3vcr4ck/externData/materias-Sem20_2/redes2/redes2/practica6/servidorTFTP/project-files/dynamips 
+May 21 01:23:50.799 GENERAL: working_dir=/run/media/d3vcr4ck/externData/materias-Sem20_2/redes2/redes2/practica6/servidorTFTP/project-files/dynamips
+May 21 01:23:50.799 HYPERVISOR: exec_cmd: ethsw create Switch3 
+May 21 01:23:52.426 HYPERVISOR: exec_cmd: nio create_udp udp-a3a4e85b-7d3b-4282-aa73-36353b4a153e 10021 127.0.0.1 10020 
+May 21 01:23:52.426 HYPERVISOR: exec_cmd: ethsw add_nio Switch3 udp-a3a4e85b-7d3b-4282-aa73-36353b4a153e 
+May 21 01:23:52.431 HYPERVISOR: exec_cmd: ethsw set_access_port Switch3 udp-a3a4e85b-7d3b-4282-aa73-36353b4a153e 1 
+May 21 01:23:52.960 HYPERVISOR: exec_cmd: nio create_udp udp-176f6339-e6ce-4396-b0ba-477b06952ecf 10034 127.0.0.1 10035 
+May 21 01:23:52.961 HYPERVISOR: exec_cmd: ethsw add_nio Switch3 udp-176f6339-e6ce-4396-b0ba-477b06952ecf 
+May 21 01:23:52.973 HYPERVISOR: exec_cmd: ethsw set_access_port Switch3 udp-176f6339-e6ce-4396-b0ba-477b06952ecf 1 
+May 21 01:23:53.102 HYPERVISOR: exec_cmd: nio create_udp udp-11967221-5300-4c05-8ad1-4e8cc7591767 10036 127.0.0.1 10037 
+May 21 01:23:53.103 HYPERVISOR: exec_cmd: ethsw add_nio Switch3 udp-11967221-5300-4c05-8ad1-4e8cc7591767 
+May 21 01:23:53.114 HYPERVISOR: exec_cmd: ethsw set_access_port Switch3 udp-11967221-5300-4c05-8ad1-4e8cc7591767 1 
