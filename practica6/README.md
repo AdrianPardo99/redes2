@@ -1,4 +1,4 @@
-### Servidor TFTP en Linux ###
+# Servidor TFTP en Linux #
 
 ## Instalación en Fedora ##
 
