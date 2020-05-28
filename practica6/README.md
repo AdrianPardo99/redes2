@@ -26,7 +26,7 @@ Cambiar por
 
 ExecStart=/usr/sbin/in.tftpd -c -s -p /var/lib/tftpboot
 
-# Las banderas explican #
+__Las banderas explican__
 
   -c permite crear nuevos archivos
 
