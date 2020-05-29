@@ -1,2 +1,3 @@
 ejemplos/gns3EnrutamientoRIP/project-files/virtualbox/9383f769-26ad-46a5-93d7-1566ea342a44/debianRedes2-buena-2/Snapshots/2020-05-12T00-33-09-864251000Z.sav filter=lfs diff=lfs merge=lfs -text
 ejemplos/gns3EnrutamientoRIP/project-files/virtualbox/f3e8f101-5248-4fe4-87a5-076bd8a60b58/debianRedes2-buena-1/Snapshots/2020-05-12T00-33-09-864251000Z.sav filter=lfs diff=lfs merge=lfs -text
+practica7/servidorDNS/project-files/virtualbox/5ee4e4d2-e142-4261-8726-38a18223bdb7/dns-server-1/Snapshots/{3addd554-f7ca-4199-a9c3-dd23365603eb}.vdi filter=lfs diff=lfs merge=lfs -text
