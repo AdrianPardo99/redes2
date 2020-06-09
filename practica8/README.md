@@ -84,3 +84,49 @@ host vm3 {
   Router-n(config)# int <interfaz-externa-a-la-red-del-servidor>
   Router-n(config-int)# ip helper-address <IP-servidor-DHCP>
 ```
+
+### Imagenes relacionadas ###
+
+___Topología___
+
+![topoligia](img/topoligia.png)
+
+___LAN-1___
+
+![lan1-vpc1](img/lan1.png)
+
+![lan1-vpc2](img/lan1-1.png)
+
+___LAN-2___
+
+![lan2-vpc1](img/lan2.png)
+
+![lan2-vpc2](img/lan2-1.png)
+
+___LAN-3___
+
+![lan3-vpc1](img/lan3.png)
+
+![lan3-vpc2](img/lan3-1.png)
+
+___LAN-4___
+
+![lan4-vpc1](img/lan4.png)
+
+![lan4-vpc2](img/lan4-1.png)
+
+___LAN-2-VM___
+
+![lan2-vm](img/lan2-vm.png)
+
+___LAN-3-VM___
+
+![lan3-vm](img/lan3-vm.png)
+
+___LAN-4-VM___
+
+![lan4-vm](img/lan3-vm.png)
+
+___Conexión ssh con las VM___
+
+![lan4-vm](img/ssh-vms.png)
