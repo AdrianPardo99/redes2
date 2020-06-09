@@ -89,7 +89,7 @@ host vm3 {
 
 ___Topología___
 
-![topoligia](./reporte/img/topoligia.png)
+![topoligia](./reporte/img/topologia.png)
 
 ___LAN-1___
 
