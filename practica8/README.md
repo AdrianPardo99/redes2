@@ -3,13 +3,13 @@
 ## Instalación Fedora ##
 
 ```
-\# dnf -y install dhcp
+# dnf -y install dhcp
 ```
 
 ## Instalación Debian ##
 
 ```
-\# apt install isc-dhcp-server -y
+# apt install isc-dhcp-server -y
 ```
 
 ### Configuración montada en la interfas virtual tap0 ###
@@ -57,4 +57,30 @@ host vm3 {
   option routers 192.168.4.254;
   option subnet-mask 255.255.255.0;
 }
+```
+
+### Configuración de firewall y habilitación servidor DHCP ###
+
+```
+  # systemctl enable dhcpd
+  # firewall-cmd --add-service=dhcpd --permanent
+  # firewall-cmd --reload
+  # systemctl start dhcpd
+```
+
+### Para que las VPCS Obtengan dirección IP del server DHCP ###
+
+```
+  VPCS[#]> dhcp
+  // En el output de la VPCS se debe observar el proceso de DHCP Discover (D)
+  // DHCP Offer (O), DHCP Request (R), Acknowledge (A)
+  // El cual obtendra la IP del servidor DHCP
+```
+
+### En los routers para redireccionar el trafico para que llegue al DHCP ###
+
+```
+  Router-n# conf t
+  Router-n(config)# int <interfaz-externa-a-la-red-del-servidor>
+  Router-n(config-int)# ip helper-address <IP-servidor-DHCP>
 ```
