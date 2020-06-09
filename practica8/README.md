@@ -130,3 +130,7 @@ ___LAN-4-VM___
 ___Conexión ssh con las VM___
 
 ![lan4-vm](./reporte/img/ssh-vms.png)
+
+### Video relacionado con el funcionamiento: ###
+
+[Video click.](./reporte/video/dhcp.mp4)
