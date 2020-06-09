@@ -89,44 +89,44 @@ host vm3 {
 
 ___Topología___
 
-![topoligia](reporte/img/topoligia.png)
+![topoligia](./reporte/img/topoligia.png)
 
 ___LAN-1___
 
-![lan1-vpc1](reporte/img/lan1.png)
+![lan1-vpc1](./reporte/img/lan1.png)
 
-![lan1-vpc2](reporte/img/lan1-1.png)
+![lan1-vpc2](./reporte/img/lan1-1.png)
 
 ___LAN-2___
 
-![lan2-vpc1](reporte/img/lan2.png)
+![lan2-vpc1](./reporte/img/lan2.png)
 
-![lan2-vpc2](reporte/img/lan2-1.png)
+![lan2-vpc2](./reporte/img/lan2-1.png)
 
 ___LAN-3___
 
-![lan3-vpc1](reporte/img/lan3.png)
+![lan3-vpc1](./reporte/img/lan3.png)
 
-![lan3-vpc2](reporte/img/lan3-1.png)
+![lan3-vpc2](./reporte/img/lan3-1.png)
 
 ___LAN-4___
 
-![lan4-vpc1](reporte/img/lan4.png)
+![lan4-vpc1](./reporte/img/lan4.png)
 
-![lan4-vpc2](reporte/img/lan4-1.png)
+![lan4-vpc2](./reporte/img/lan4-1.png)
 
 ___LAN-2-VM___
 
-![lan2-vm](reporte/img/lan2-vm.png)
+![lan2-vm](./reporte/img/lan2-vm.png)
 
 ___LAN-3-VM___
 
-![lan3-vm](reporte/img/lan3-vm.png)
+![lan3-vm](./reporte/img/lan3-vm.png)
 
 ___LAN-4-VM___
 
-![lan4-vm](reporte/img/lan3-vm.png)
+![lan4-vm](./reporte/img/lan3-vm.png)
 
 ___Conexión ssh con las VM___
 
-![lan4-vm](reporte/img/ssh-vms.png)
+![lan4-vm](./reporte/img/ssh-vms.png)
