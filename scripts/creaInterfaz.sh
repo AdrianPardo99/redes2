@@ -2,7 +2,7 @@
 
 echo -n "Ingresa el nombre de la interfaz virtual que deseas crear: "
 read virtualInt
-echo -n "Creacion de la interfaz virtual ${virtualInt}: "
+echo "Creacion de la interfaz virtual ${virtualInt}: "
 sudo tunctl -t ${virtualInt} -u $(whoami)
 echo -n "Habilitación de la interfaz ${virtualInt}: "
 sudo ip l s dev ${virtualInt} up
