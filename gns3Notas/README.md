@@ -36,9 +36,9 @@ $ sudo dnf -y install vpcs dynamips
 
 En las VPCS contienen algunos comandos familiarizados a los comandos existentes en Linux
 ```bash
-\\\> ? ; Este sirve para pedir ayuda en los comandos familiarizados con la VPCS
+> ? ; Este sirve para pedir ayuda en los comandos familiarizados con la VPCS
 
-\\\> ip \<address\>/\<mask-bits\> \<gateway\> ; Sirve como \<parametros\> los cuales describen lo siguiente "address" es la dirección IP que se le asignara a la VPCS "mask-bits" es la mascara de subred que se le asigna para la creación de redes a nivel local, recordemos que esta mascara va 0 a 32 bits (dependiendo el número de host de la red), "gateway" es la puerta de enlace de datos que generalmente procede de la dirección que pertenece al router, en algunas ocasiones es la primer dirección y en algunas es la ultima dirección, dependiendo como sea la comodidad
+> ip <address>/<mask-bits> <gateway> ; Sirve como <parametros> los cuales describen lo siguiente "address" es la dirección IP que se le asignara a la VPCS "mask-bits" es la mascara de subred que se le asigna para la creación de redes a nivel local, recordemos que esta mascara va 0 a 32 bits (dependiendo el número de host de la red), "gateway" es la puerta de enlace de datos que generalmente procede de la dirección que pertenece al router, en algunas ocasiones es la primer dirección y en algunas es la ultima dirección, dependiendo como sea la comodidad
 ```
 
 ## En Routers IOS ##
@@ -46,19 +46,19 @@ En las VPCS contienen algunos comandos familiarizados a los comandos existentes 
 __Para configuración de las interfaces de red conectadas vamos a hacer uso de las siguientes líneas de código__
 
 ```bash
-\\\# conf t
+# conf t
 
-\\\#(config) int or interface \<Interface\#/\#\>
+#(config) int or interface <Interface\#/\#>
 
-\\\#(conf-interface) ip address \<address\> \<netmask\>
+#(conf-interface) ip address <address> <netmask>
 
-\\\#(conf-interface) no shu
+#(conf-interface) no shu
 
-\\\#(conf-interface) exit
+#(conf-interface) exit
 
-\\\#(config) exit
+#(config) exit
 
-\\\# wr
+# wr
 ```
 
 __Para enrutamiento estático__
@@ -66,7 +66,7 @@ __Para enrutamiento estático__
 ```bash
 \\\# conf t
 
-\\\#(config) ip route \<network\> \<netmask\> \<gateway\>
+\\\#(config) ip route <network> <netmask> <gateway>
 
 \\\#(config) exit
 
@@ -76,7 +76,7 @@ __Para enrutamiento estático__
 ___Forma 2:___
 
 ```bash
-\\\#(config) ip route \<network\> \<netmask\> \<interface\>
+\\\#(config) ip route <network> <netmask> <interface>
 
 \\\#(config) exit
 
@@ -92,7 +92,7 @@ ___Para enrutamiento con RIP_v2___
 
 \\\#(config-rou) version 2
 
-\\\#(config-rou) network \<network\>
+\\\#(config-rou) network <network>
 
 \\\#(config-rou) exit
 
@@ -126,14 +126,14 @@ __Paso 3__
 Añadiremos una ip para que podamos trabajar
 
 ```bash
-$ sudo ip address add \<IP\> dev tap0
+$ sudo ip address add <IP> dev tap0
 ```
 __Paso 4__
 
 Añadiremos el enrutamiento a las distintas redes que pertenece esta maquina
 
 ```bash
-$ sudo ip route add \<network\>/\<netmask\> via \<IP\> dev tap0
+$ sudo ip route add <network>/<netmask> via <IP> dev tap0
 ```
 
 __Paso 5__
