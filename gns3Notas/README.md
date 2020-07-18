@@ -6,6 +6,7 @@ GNS3 es un software muy importante pues permite emular entornos y topologías de
 
 __En Distribuciones basadas en Debian__
 
+```bash
 $ sudo add-apt-repository ppa:gns3/ppa --yes
 
 $ sudo apt update                                
@@ -17,9 +18,10 @@ $ sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys F88F6D3130163304
 $ sudo apt-get update
 
 $ sudo apt install dynamips ubridge
-
+```
 __En Distribuciones basadas en RedHat__
 
+```bash
 $ sudo dnf -y install git gcc cmake flex bison elfutils-libelf-devel libuuid-devel libpcap-devel python3-tornado python3-netifaces python3-devel python-pip python3-setuptools python3-PyQt4 python3-zmq wireshark --skip-broken
 
 $ sudo dnf -y install gns3-server gns3-gui wireshark wireshark-qt qemu-kvm qemu-system-x86
@@ -27,22 +29,23 @@ $ sudo dnf -y install gns3-server gns3-gui wireshark wireshark-qt qemu-kvm qemu-
 $ sudo dnf -y copr enable athmane/gns3-extra
 
 $ sudo dnf -y install vpcs dynamips
-
+```
 
 ## Algunos hits de VPCS ##
 
 
 En las VPCS contienen algunos comandos familiarizados a los comandos existentes en Linux
-
+```bash
 \\\> ? ; Este sirve para pedir ayuda en los comandos familiarizados con la VPCS
 
 \\\> ip \<address\>/\<mask-bits\> \<gateway\> ; Sirve como \<parametros\> los cuales describen lo siguiente "address" es la dirección IP que se le asignara a la VPCS "mask-bits" es la mascara de subred que se le asigna para la creación de redes a nivel local, recordemos que esta mascara va 0 a 32 bits (dependiendo el número de host de la red), "gateway" es la puerta de enlace de datos que generalmente procede de la dirección que pertenece al router, en algunas ocasiones es la primer dirección y en algunas es la ultima dirección, dependiendo como sea la comodidad
-
+```
 
 ## En Routers IOS ##
 
 __Para configuración de las interfaces de red conectadas vamos a hacer uso de las siguientes líneas de código__
 
+```bash
 \\\# conf t
 
 \\\#(config) int or interface \<Interface\#/\#\>
@@ -56,9 +59,11 @@ __Para configuración de las interfaces de red conectadas vamos a hacer uso de l
 \\\#(config) exit
 
 \\\# wr
+```
 
 __Para enrutamiento estático__
 
+```bash
 \\\# conf t
 
 \\\#(config) ip route \<network\> \<netmask\> \<gateway\>
@@ -66,17 +71,21 @@ __Para enrutamiento estático__
 \\\#(config) exit
 
 \\\# wr
+```
 
 ___Forma 2:___
 
+```bash
 \\\#(config) ip route \<network\> \<netmask\> \<interface\>
 
 \\\#(config) exit
 
 \\\# wr
+```
 
 ___Para enrutamiento con RIP_v2___
 
+```bash
 \\\# conf t
 
 \\\#(config) router rip
@@ -90,7 +99,7 @@ ___Para enrutamiento con RIP_v2___
 \\\#(config) exit
 
 \\\# wr
-
+```
 
 ## Conexión vía emulación con entorno local (terminal virtual externa) ##
 
@@ -100,25 +109,32 @@ __Paso 1__
 
 Crearemos la interfaz de red virtual
 
+```bash
 $ sudo tunctl -t tap0 -u $(whoami)
+```
 
 __Paso 2__
 
 Encenderemos la interfaz de red virtual
 
+```bash
 $ sudo ip l s dev tap0 up
+```
 
 __Paso 3__
 
 Añadiremos una ip para que podamos trabajar
 
+```bash
 $ sudo ip address add \<IP\> dev tap0
-
+```
 __Paso 4__
 
 Añadiremos el enrutamiento a las distintas redes que pertenece esta maquina
 
+```bash
 $ sudo ip route add \<network\>/\<netmask\> via \<IP\> dev tap0
+```
 
 __Paso 5__
 
@@ -126,10 +142,14 @@ Añadir la nube de la interfaz de red "tap0" a GNS3 para trabajar con ella desde
 
 Para ver la tabla de enrutamiento:
 
+```bash
 $ route -n
+```
 
 Para eliminar la interfaz tap0 así como su tabla de enrutamiento:
 
+```bash
 $ sudo ip route flush dev tap0
 
 $ sudo ip l d tap0
+```

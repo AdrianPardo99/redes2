@@ -1,7 +1,8 @@
 # Para que esta madre jale chido y como le comence a mover
 
-__ En la terminal normal del router __
+__En la terminal normal del router__
 
+```bash
 \> debug ip rip
 
 \> conf t
@@ -32,4 +33,4 @@ __ En la terminal normal del router __
 
 \> (config) ip forward-protocol udp \<port\>
 
-
+```
