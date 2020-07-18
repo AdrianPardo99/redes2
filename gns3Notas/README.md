@@ -46,59 +46,59 @@ En las VPCS contienen algunos comandos familiarizados a los comandos existentes 
 __Para configuración de las interfaces de red conectadas vamos a hacer uso de las siguientes líneas de código__
 
 ```bash
-# conf t
+\# conf t
 
-#(config) int or interface <Interface\#/\#>
+\#(config) int or interface <Interface\#/\#>
 
-#(conf-interface) ip address <address> <netmask>
+\#(conf-interface) ip address <address> <netmask>
 
-#(conf-interface) no shu
+\#(conf-interface) no shu
 
-#(conf-interface) exit
+\#(conf-interface) exit
 
-#(config) exit
+\#(config) exit
 
-# wr
+\# wr
 ```
 
 __Para enrutamiento estático__
 
 ```bash
-\\\# conf t
+\# conf t
 
-\\\#(config) ip route <network> <netmask> <gateway>
+\#(config) ip route <network> <netmask> <gateway>
 
-\\\#(config) exit
+\#(config) exit
 
-\\\# wr
+\# wr
 ```
 
 ___Forma 2:___
 
 ```bash
-\\\#(config) ip route <network> <netmask> <interface>
+\#(config) ip route <network> <netmask> <interface>
 
-\\\#(config) exit
+\#(config) exit
 
-\\\# wr
+\# wr
 ```
 
 ___Para enrutamiento con RIP_v2___
 
 ```bash
-\\\# conf t
+\# conf t
 
-\\\#(config) router rip
+\#(config) router rip
 
-\\\#(config-rou) version 2
+\#(config-rou) version 2
 
-\\\#(config-rou) network <network>
+\#(config-rou) network <network>
 
-\\\#(config-rou) exit
+\#(config-rou) exit
 
-\\\#(config) exit
+\#(config) exit
 
-\\\# wr
+\# wr
 ```
 
 ## Conexión vía emulación con entorno local (terminal virtual externa) ##
