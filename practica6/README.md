@@ -3,7 +3,7 @@
 ## Instalación en Fedora ##
 
 ```bash
-\$ sudo dnf install tftp-server tftp -y
+$ sudo dnf install tftp-server tftp -y
 ```
 
 __El servicio de TFTP en este sistema estan alojados en /usr/lib/systemd/system/ tftp.service and tftp.socket__
@@ -11,9 +11,9 @@ __El servicio de TFTP en este sistema estan alojados en /usr/lib/systemd/system/
 ___Lo siguiente es___
 
 ```bash
-\$ sudo cp /usr/lib/systemd/system/tftp.service /usr/lib/systemd/system/tftp-server.service
+$ sudo cp /usr/lib/systemd/system/tftp.service /usr/lib/systemd/system/tftp-server.service
 
-\$ sudo cp /usr/lib/systemd/system/tftp.socket usr/lib/systemd/system/tftp-server.socket
+$ sudo cp /usr/lib/systemd/system/tftp.socket usr/lib/systemd/system/tftp-server.socket
 ```
 
 ___En el archivo de tftp-server.service se modifica la linea ubicada en [Unit]___
